@@ -38,22 +38,39 @@
         </form>
         <?php
             /* Si existe enviar pues hace lo que tiene dentro */
-            if(isset($_POST['enviar'])){
-                //print_r($_POST['etapas']);
-                /* for($i=0;$i<count($_POST)-1;$i++){
-                    if($_POST[$i]==$_POST["etapas"]){
-                        foreach($_POST[$i] as $valor){
+            /* if(isset($_POST['enviar'])){
+                foreach($_POST as $nombre=>$valor){
+                    if(isset($_POST["etapas"]) && $_POST["etapas"]==$_POST["$nombre"]){
+                        foreach($_POST["etapas"] as $valor){
                             echo "$valor <br>";
                         }
                     }else{
-                        echo "$_POST[$i] <br>";
+                        if(isset($_POST["actividadSeccion"]) && $_POST["actividadSeccion"]==$_POST["$nombre"]){
+                            echo "actividadSeccion <br>";
+                        }else{
+                            if($_POST["$nombre"]==$_POST["enviar"]){
+
+                            }else{
+                                echo "$nombre: $valor<br>";
+                            }
+                        }
                     }
-                    
-                } */
-                foreach($_POST as $nombre=>$valor){
-                    
                 }
-            } 
+            }  */
+            /* Si esxiste enviar, muestro los componentes del formulario 1 a 1 */
+            if(isset($_POST['enviar'])){
+                echo $_POST["categoria"];
+                echo "<br>";
+                echo $_POST["nombreActividad"];
+                echo "<br>";
+                if(isset($_POST["etapas"])){
+                    print_r($_POST["etapas"]);
+                }
+                echo "<br>";
+                if(isset($_POST["actividadSeccion"])){
+                    echo $_POST["actividadSeccion"];
+                }
+            }
         ?>
     </body>
 </html>
