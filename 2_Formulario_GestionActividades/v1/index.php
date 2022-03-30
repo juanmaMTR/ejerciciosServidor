@@ -64,7 +64,7 @@
                 echo $_POST["nombreActividad"];
                 echo "<br>";
                 if(isset($_POST["etapas"])){
-                    print_r($_POST["etapas"]);
+                    print_r($_POST["etapas"]); /* Realizo un print_r para mostrar los valores porque es un array */
                 }
                 echo "<br>";
                 if(isset($_POST["actividadSeccion"])){

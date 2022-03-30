@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>Gestión Actividades</h1>
-        <form action="mostrar.php" method="post">
+        <form action="#" method="post">
             <select name="categoria">
                 <option value="navidad">Navidad</option>
                 <option value="semanaIgnaciana">Semana Ignaciana</option>
@@ -21,20 +21,27 @@
             <br />
             <label>ETAPAS:</label> <br />
             <label>Primaria </label>
-            <input type="checkbox" name="etapas[]" value="primaria"><br />
+            <input type="checkbox" name="primaria"><br />
             <label>ESO </label>
-            <input type="checkbox" name="etapas[]" value="eso"><br />
+            <input type="checkbox" name="eso"><br />
             <label>Bachillerato </label>
-            <input type="checkbox" name="etapas[]" value="bachillerato"><br />
+            <input type="checkbox" name="bachillerato"><br />
             <label>CFGM</label>
-            <input type="checkbox" name="etapas[]" value="cfgm"><br />
+            <input type="checkbox" name="cfgm"><br />
             <label>CFGS </label>
-            <input type="checkbox" name="etapas[]" value="cfgs"><br />
+            <input type="checkbox" name="cfgs"><br />
             <br />
             <label>Actividad de Sección: </label>
             <input type="radio" name="actividadSeccion"><br />
             <br />
             <input type="submit" value="Enviar" name="enviar">
         </form>
+        <?php
+            if(isset($_POST['enviar'])){
+                require_once __DIR__. "/controller/controlador.php";
+                $controlador=new Controlador();
+                $controlador->datosformulario();
+            }
+        ?>
     </body>
 </html>
