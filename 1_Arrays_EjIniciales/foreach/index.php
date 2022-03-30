@@ -49,7 +49,7 @@
                 echo "Dia[". $indice+1 ."]: $valor<br>";
             }
             echo "<h3>For utilizando el count</h3>";
-            /* Sumo uno al indice porque empieza en la posicion 0 */
+            /* Sumo uno al indice porque empieza en la posicion 0, y el count te dice la cantidad de elementos que tiene el array */
             for ($i=0; $i < count($diasemana); $i++) { 
                 echo "Dia[". $i+1 ."]: $diasemana[$i]<br>";
             }

@@ -8,6 +8,7 @@
         <title>Gestion Actividades</title>
     </head>
     <body>
+        <h1>Gestión Actividades</h1>
         <form action="#" method="post">
             <select name="categoria">
                 <option value="navidad">Navidad</option>
@@ -37,9 +38,7 @@
         </form>
         <?php
             if(isset($_POST['enviar'])){
-                foreach($_POST as $nombre=>$valor){
-                    echo "$nombre : $valor<br>";
-                }
+                
             }
         ?>
     </body>
