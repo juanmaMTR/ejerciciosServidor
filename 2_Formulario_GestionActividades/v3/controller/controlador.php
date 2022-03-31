@@ -12,7 +12,8 @@
         }
         function datosformulario(){
             $datosFormulario=$this->modelo->recoger_formulario();
-            echo print_r($datosFormulario);
+            // echo print_r($datosFormulario);
+            $this->modelo->mostrar_datos($datosFormulario);
         }
     }
 
