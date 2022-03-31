@@ -21,15 +21,15 @@
             <br />
             <label>ETAPAS:</label> <br />
             <label>Primaria </label>
-            <input type="checkbox" name="primaria"><br />
+            <input type="checkbox" name="etapas[]" value="primaria"><br />
             <label>ESO </label>
-            <input type="checkbox" name="eso"><br />
+            <input type="checkbox" name="etapas[]" value="eso"><br />
             <label>Bachillerato </label>
-            <input type="checkbox" name="bachillerato"><br />
+            <input type="checkbox" name="etapas[]" value="bachillerato"><br />
             <label>CFGM</label>
-            <input type="checkbox" name="cfgm"><br />
+            <input type="checkbox" name="etapas[]" value="cfgm"><br />
             <label>CFGS </label>
-            <input type="checkbox" name="cfgs"><br />
+            <input type="checkbox" name="etapas[]" value="cfgs"><br />
             <br />
             <label>Actividad de Sección: </label>
             <input type="radio" name="actividadSeccion"><br />
@@ -38,9 +38,10 @@
         </form>
         <?php
             if(isset($_POST['enviar'])){
-                require_once __DIR__. "/controller/controlador.php";
-                $controlador=new Controlador();
-                $controlador->datosformulario();
+                require_once __DIR__. "/model/modelo.php";
+                $modelo=new Modelo();
+                $formulario=$modelo->recoger_formulario();
+                $modelo->mostrar_datos($formulario);
             }
         ?>
     </body>
