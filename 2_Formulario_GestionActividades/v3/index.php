@@ -38,10 +38,14 @@
         </form>
         <?php
             if(isset($_POST['enviar'])){
-                require_once __DIR__. "/model/modelo.php";
+                /* require_once __DIR__. "/model/modelo.php";
                 $modelo=new Modelo();
                 $formulario=$modelo->recoger_formulario();
-                $modelo->mostrar_datos($formulario);
+                $modelo->mostrar_datos($formulario); */
+                require_once __DIR__. "/controller/controlador.php";
+                $controlador=new Controlador();
+                $salida=$controlador->datosformulario();
+                echo "$salida";
             }
         ?>
     </body>
