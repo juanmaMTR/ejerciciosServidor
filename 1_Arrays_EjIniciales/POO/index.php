@@ -18,7 +18,25 @@
             $modelo=new Modelo;
             /* Llamo a los metodos del objeto */
             $modelo->darValores();
-            $modelo->verValores();
+            /* Recorro el array $meses y muestro los datos mediante un echo en el foreach */
+            foreach($modelo->meses as $nombremes=>$dia){
+                echo "Mes: $nombremes => $dia.<br>";
+            }
+            echo "<h3>Foreach solo valor</h3>";
+            /* Recorro el array para mostrar solo el valor */
+            foreach($modelo->meses as $dia){
+                echo "Valor $dia<br>";
+            }
+            echo "<h3>Foreach dias de la semana con el indice</h3>";
+            /* Sumo uno al indice porque empieza en la posicion 0 */
+            foreach($modelo->diasemana as $indice=>$valor){
+                echo "Dia[". $indice+1 ."]: $valor<br>";
+            }
+            echo "<h3>For utilizando el count</h3>";
+            /* Sumo uno al indice porque empieza en la posicion 0, y el count te dice la cantidad de elementos que tiene el array */
+            for ($i=0; $i < count($modelo->diasemana); $i++) { 
+                echo "Dia[". $i+1 ."]: ". $modelo->diasemana[$i] ."<br>";
+            }
         ?>
     </body>
 </html>
