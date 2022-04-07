@@ -1,5 +1,6 @@
 <?php
     class Modelo{
+        /* Deben de ser publicos porque los llamo desde un archivo externo */
         public $meses;
         public $diasemana;
         function darValores(){
