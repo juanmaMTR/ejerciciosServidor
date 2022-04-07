@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Para enseñar los meses del año con foreach -->
+<!-- Creamos el array en el archivo externo y se llama al método visualizar para que muestre los datos -->
 <html lang="es">
     <head>
         <meta charset="UTF-8">
