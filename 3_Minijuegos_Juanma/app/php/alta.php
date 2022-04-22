@@ -19,14 +19,15 @@
             <br />
             <input type="submit" value="Enviar" name="enviar"><br/>
         </form>
-        <a href="../index.html">Volver al Inicio</a>
+        <a href="../index.html">Volver al Inicio</a><br/>
     </body>
 </html>
 <?php
     if(isset($_POST['enviar'])){
         require_once __DIR__. "/controller/controlador.php";
         $controlador=new Controlador();
-        $controlador->darAlta();
+        $resultado=$controlador->darAlta();
+        echo $resultado;
     }
 
 ?>
