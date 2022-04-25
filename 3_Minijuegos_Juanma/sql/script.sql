@@ -14,5 +14,7 @@ CREATE TABLE minijuego(
     icono varchar(100) null,
     ruta varchar (255) not null
 );
-/*Meto los privilegios de datos al usuario en la base de datos de minijuegos */
+/* Creo el usuario */
+CREATE USER 'juanma'@'localhost' IDENTIFIED VIA mysql_native_password USING '***';GRANT USAGE ON *.* TO 'juanma'@'localhost' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+/* Meto los privilegios de datos al usuario en la base de datos de minijuegos */
 GRANT SELECT, INSERT, UPDATE, DELETE ON `minijuegos`.* TO 'juanma'@'localhost';

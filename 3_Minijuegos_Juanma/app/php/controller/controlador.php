@@ -7,23 +7,33 @@
 
     class Controlador{
         public $modelo;
+        /**
+         * @function __construct()
+         * Constructor de la clase que llama al Modelo
+         */
         function __construct(){
             require_once __DIR__. "/../model/modelo.php";
             $this->modelo=new Modelo();
         }
+        /**
+         * @function darAlta()
+         * Función para dar de alta a un Minijuego, llamo a la vista del alta
+         * @return string texto explicativo por si falla algo o si la consulta se ha realizado correctamente
+         */
         function darAlta(){
+            include_once __DIR__. "/../views/alta.php";
             //Compruebo que el nombre no se queda en blanco
-            if($_POST['nombre']==''){
+            if(empty($_POST['nombre'])){
                 return "No dejes el nombre en blanco";
             }
             //Compruebo si el icono está en blanco y le meto NULL y sino le pongo las comillas para después al realizar la consulta
-            if($_POST['icono']==''){
+            if(empty($_POST['icono'])){
                 $_POST['icono']='NULL';
             }else{
                 $_POST['icono']="'".$_POST['icono']."'";
             }
             //Compruebo que la ruta no se queda en blanco
-            if($_POST['ruta']==''){
+            if(empty($_POST['ruta'])){
                 return "No dejes la ruta en blanco";
             }
             //LLamo al alta para que realize la consulta
@@ -31,11 +41,15 @@
             //Compruebo si hay filas afectadas
             if($this->modelo->conexion->affected_rows>0){
                 return "Hay ".$this->modelo->conexion->affected_rows." filas afectadas.";
+            }else{
+                //Compruebo que los nombres no se repitan con este error que sale al repetirse el nombre en la base de datos
+                if($this->modelo->conexion->errno==1062){
+                    return "El nombre ya existe";
+                }else{
+                    return "Se ha producido un error inesperado";
+                }
             }
-            //Compruebo que los nombres no se repitan con este error que sale al repetirse el nombre en la base de datos
-            if($this->modelo->conexion->errno==1062){
-                return "El nombre ya existe";
-            }
+            
         }
     }
 

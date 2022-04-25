@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Juan Manuel Toscano Reyes">
+        <link rel="stylesheet" href="../css/style.css">
         <title>Alta Minijuegos</title>
     </head>
     <body>
@@ -24,7 +25,7 @@
 </html>
 <?php
     if(isset($_POST['enviar'])){
-        require_once __DIR__. "/controller/controlador.php";
+        require_once __DIR__. "/../controller/controlador.php";
         $controlador=new Controlador();
         $resultado=$controlador->darAlta();
         echo $resultado;
