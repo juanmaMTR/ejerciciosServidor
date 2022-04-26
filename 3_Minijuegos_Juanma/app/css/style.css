@@ -37,3 +37,16 @@ form{
 a{
     text-decoration: none;
 }
+table{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-collapse: collapse;
+}
+table tr td, table tr th{
+    width: auto;
+    height: auto;
+    border: 2px solid black;
+}

@@ -21,23 +21,28 @@
          * @return string texto explicativo por si falla algo o si la consulta se ha realizado correctamente
          */
         function darAlta(){
+            //Incluyo la vista del alta
             include_once __DIR__. "/../views/alta.php";
             //Compruebo que el nombre no se queda en blanco
             if(empty($_POST['nombre'])){
                 return "No dejes el nombre en blanco";
+            }else{
+                $nombre="'".$_POST['nombre']."'";
             }
             //Compruebo si el icono está en blanco y le meto NULL y sino le pongo las comillas para después al realizar la consulta
             if(empty($_POST['icono'])){
-                $_POST['icono']='NULL';
+                $icono='NULL';
             }else{
-                $_POST['icono']="'".$_POST['icono']."'";
+                $icono="'".$_POST['icono']."'";
             }
             //Compruebo que la ruta no se queda en blanco
             if(empty($_POST['ruta'])){
                 return "No dejes la ruta en blanco";
+            }else{
+                $ruta="'".$_POST['ruta']."'";
             }
             //LLamo al alta para que realize la consulta
-            $this->modelo->alta();
+            $this->modelo->alta($nombre,$icono,$ruta);
             //Compruebo si hay filas afectadas
             if($this->modelo->conexion->affected_rows>0){
                 return "Hay ".$this->modelo->conexion->affected_rows." filas afectadas.";
@@ -50,6 +55,19 @@
                 }
             }
             
+        }
+        /**
+         * @funtion listarMinijuego()
+         * Función para listar los minijuegos que hay en la base de datos
+         * @return $resultado Array de datos que viene de realizar la consulta del modelo
+         */
+        function listarMinijuego(){
+            //Incluyo la vista de listar
+            include_once __DIR__. "/../views/listar.php";
+            //Llamo al listar del modelo para que realize la consulta
+            $resultado=$this->modelo->listar();
+            //Retorno a la vista los datos que me llegan del modelo
+            return $resultado;
         }
     }
 

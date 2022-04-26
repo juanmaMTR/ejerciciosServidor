@@ -9,6 +9,14 @@
             case 'alta':
                 $controlador->darAlta();
                 break;
+            case 'listar':
+                $controlador->listarMinijuego();
+                break;
+            default:
+                echo "Se ha producido un error inesperado";
+                break;
         }
+    }else{
+        echo "No hay ninguna acción seleccionada";
     }
 ?>
