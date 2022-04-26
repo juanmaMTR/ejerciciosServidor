@@ -20,6 +20,11 @@ nav{
     justify-content: center;
     align-items: center;
 }
+nav ul{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
 nav ul li{
     list-style-type: none;
 }

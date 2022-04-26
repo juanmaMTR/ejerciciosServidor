@@ -59,7 +59,7 @@
         /**
          * @funtion listarMinijuego()
          * Función para listar los minijuegos que hay en la base de datos
-         * @return $resultado Array de datos que viene de realizar la consulta del modelo
+         * @return resultado Array de datos que viene de realizar la consulta del modelo
          */
         function listarMinijuego(){
             //Incluyo la vista de listar
@@ -68,6 +68,37 @@
             $resultado=$this->modelo->listar();
             //Retorno a la vista los datos que me llegan del modelo
             return $resultado;
+        }
+        /**
+         * @function consultarMinijuego()
+         * Función para consultar el minijuego que se selecciona en el listado
+         * @return resultado Array de datos que viene de la consulta del modelo
+         */
+        function consultarMinijuego(){
+            //Incluyo la vista de consultar
+            include_once __DIR__. "/../views/borrar.php";
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                //LLamo al método del modelo y le paso el id correspondiente que viene por URL
+                $resultado=$this->modelo->consultar($id);
+                return $resultado;
+            }else{
+                return 'Se ha producido un error';
+            }
+        }
+        /**
+         * @function borrarMinijuego()
+         * Funcion para borrar el minijuego que se desea
+         * @param id Es el identificador del minijuego que será necesario para el modelo
+         * @return string Texto que se devuelve, donde dice si se ha realizado bien el borrado o ha habido algún error
+         */
+        function borrarMinijuego($id){
+            $this->modelo->borrar($id);
+            if($this->modelo->conexion->affected_rows>0){
+                return "Se ha eliminado correctamente";
+            }else{
+                return "Se ha producido un error";
+            }
         }
     }
 

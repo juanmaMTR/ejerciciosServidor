@@ -10,6 +10,13 @@
     </head>
     <body>
         <h1>Alta Minijuegos</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href='index.php?accion=alta'>Alta Minijuegos</a></li>
+                <li><a href="index.php?accion=listar">Listado Minijuegos</a></li>
+            </ul>
+        </nav>
         <form action="#" method="post">
             <label>Nombre Minijuego: </label>
             <input type="text" name="nombre" placeholder="Nombre" /><br/>
@@ -20,7 +27,6 @@
             <br />
             <input type="submit" value="Enviar" name="enviar"><br/>
         </form>
-        <a href="../index.html">Volver al Inicio</a><br/>
     </body>
 </html>
 <?php
