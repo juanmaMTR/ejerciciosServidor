@@ -63,6 +63,17 @@
             //Realizo la consulta en la base de datos
             $this->conexion->query($sql);
         }
+        /**
+         * @function editar()
+         * Función para editar un minijuego en la base de datos
+         * @param id,nombre,icono,ruta Variables necesarias para la consulta sql
+         */
+        function editar($id,$nombre,$icono,$ruta){
+            //Sentencia sql para editar el minijuego según el id
+            $sql="UPDATE minijuego SET nombre=$nombre,icono=$icono,ruta=$ruta WHERE id=$id";
+            //Realizo la consulta en la base de datos
+            $this->conexion->query($sql);
+        }
     }
 
 /* FIN DE LA PAGINA */

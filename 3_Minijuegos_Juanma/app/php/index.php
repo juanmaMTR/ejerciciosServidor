@@ -15,6 +15,9 @@
             case 'borrar':
                 $controlador->consultarMinijuego();
                 break;
+            case 'editar':
+                $controlador->consultarMinijuego();
+                break;
             default:
                 echo "Se ha producido un error inesperado";
                 break;

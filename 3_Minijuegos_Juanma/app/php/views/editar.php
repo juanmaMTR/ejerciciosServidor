@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Juan Manuel Toscano Reyes">
         <link rel="stylesheet" href="../css/style.css">
-        <title>Borrar Minijuegos</title>
+        <title>Editar Minijuegos</title>
     </head>
     <body>
-        <h1>Borrado de Minijuegos</h1>
+        <h1>Editar un Minijuego</h1>
         <nav>
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
@@ -17,37 +17,43 @@
                 <li><a href="index.php?accion=listar">Listado Minijuegos</a></li>
             </ul>
         </nav>
-        <table>
-            <tr>
-                <th>Nombre</th>
-                <th>Icono</th>
-                <th>Ruta</th>
-            </tr>
+        <form action="#" method="post">
             <?php
                 require_once __DIR__. "/../controller/controlador.php";
                 $controlador=new Controlador();
                 $resultado=$controlador->consultarMinijuego();
                 while($fila=$resultado->fetch_assoc()){ ////Duda cuando devuelvo un string me da error porque tengo el fetch como podria arreglarlo
-                    echo "<tr>
-                            <td>".$fila['nombre']."</td>
-                            <td>".$fila['icono']."</td>
-                            <td>".$fila['ruta']."</td>
-                        </tr>";
+                    $nombre=$fila['nombre'];
+                    $icono=$fila['icono'];
+                    $ruta=$fila['ruta'];
                     //Como solo va a haber un id lo meto en una variable para después borrarlo si el usuario lo desea    
                     $id=$fila['id'];
                 }
+                echo "
+                        <label>Nombre Minijuego: </label>
+                        <input type='text' value=$nombre name='nombre'><br />
+                        <label>Nombre Icono: </label>
+                    ";
+                if($icono==NULL){
+                    echo "<input type='text' name='icono'><br />";
+                }else{
+                    echo "<input type='text' value=$icono name='icono'><br />";
+                }
+                echo "
+                        <label>Ruta Minijuego: </label>
+                        <input type='text' value=$ruta name='ruta'><br />
+                    "; 
             ?>
-        </table>
-        <form action="#" method="post">
-            <input type="submit" value="Borrar" name="borrar">
+            <br />
+            <input type="submit" value="Editar" name="editar">
             <input type="submit" value="Cancelar" name="cancelar">
         </form>
     </body>
 </html>
 <?php
-    if(isset($_POST['borrar'])){
+    if(isset($_POST['editar'])){
         //LLamo al método borrarMinijuego del controlador y le paso el id que guardo antes cuando consulto el minijuego
-        $resultado=$controlador->borrarMinijuego($id);
+        $resultado=$controlador->editarMinijuego($id);
         //Visualizo el resultado del metodo
         echo $resultado;
         //Redirijo a la página index en 4seg
