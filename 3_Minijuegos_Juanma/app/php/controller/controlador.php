@@ -142,6 +142,17 @@
                 }
             }
         }
+        function seleccionarMinijuego(){
+            //Incluyo la vista
+            include_once __DIR__. "/../views/seleccionar.php";
+            //Llamo a la función listar del modelo para que me devuelva todos los minijuegos que hay en la base de datos
+            $resultado=$this->modelo->listar();
+            return $resultado;
+        }
+        function datosMinijuegoSeleccionado($id){
+            $resultado=$this->modelo->consultar($id);
+            return $resultado;
+        }
     }
 
 /* FIN DE lA PÁGINA */

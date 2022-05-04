@@ -18,6 +18,9 @@
             case 'editar':
                 $controlador->consultarMinijuego();
                 break;
+            case 'seleccionar':
+                $controlador->seleccionarMinijuego();
+                break;
             default:
                 echo "Se ha producido un error inesperado";
                 break;
