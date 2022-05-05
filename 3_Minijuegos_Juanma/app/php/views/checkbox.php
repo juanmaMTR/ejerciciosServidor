@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Juan Manuel Toscano Reyes">
         <link rel="stylesheet" href="../css/style.css">
-        <title>Listar Minijuegos</title>
+        <title>Checkbox Minijuegos</title>
     </head>
     <body>
-        <h1>Listado de Minijuegos</h1>
+        <h1>Checkbox de Minijuegos</h1>
         <nav>
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
@@ -19,26 +19,33 @@
                 <li><a href="index.php?accion=checkbox">Checkbox Minijuegos</a></li>
             </ul>
         </nav>
-        <table>
-            <tr>
-                <th>Nombre</th>
-                <th>Icono</th>
-                <th>Ruta</th>
-            </tr>
+        <form action="#" method="post">
             <?php
                 require_once __DIR__. "/../controller/controlador.php";
                 $controlador=new Controlador();
-                $resultado=$controlador->listarMinijuego();
-                while($fila=$resultado->fetch_assoc()) {
-                    echo "<tr>
-                            <td>".$fila['nombre']."</td>
-                            <td>".$fila['icono']."</td>
-                            <td>".$fila['ruta']."</td>
-                            <td><a href='index.php?accion=borrar&id=".$fila['id']."'><img src='../img/eliminar.png' /></a></td>
-                            <td><a href='index.php?accion=editar&id=".$fila['id']."'><img src='../img/editar.png' /></a></td>
-                        </tr>";
+                $resultado=$controlador->checkboxMinijuegos();
+                while($fila=$resultado->fetch_assoc()){
+                    echo "
+                        <label>".$fila['nombre']."</label>
+                        <input type=checkbox name=".$fila['nombre']."><br>
+                        ";
                 }
             ?>
-        </table>
+            <input type="submit" value="Ver" name="ver">
+            <input type="submit" value="Cancelar" name="cancelar">
+        </form>
+        <?php
+            if(isset($_POST['ver'])){
+                unset($_POST['ver']);
+                foreach($_POST as $nombre=>$valor){
+                    echo "<div>$nombre</div>";
+                }
+            }
+        ?>
     </body>
 </html>
+<?php
+    if(isset($_POST['cancelar'])){
+        header("Location: ../index.html");
+    }
+?>

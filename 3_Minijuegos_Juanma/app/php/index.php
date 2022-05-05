@@ -21,6 +21,9 @@
             case 'seleccionar':
                 $controlador->seleccionarMinijuego();
                 break;
+            case 'checkbox':
+                $controlador->checkboxMinijuegos();
+                break;
             default:
                 echo "Se ha producido un error inesperado";
                 break;

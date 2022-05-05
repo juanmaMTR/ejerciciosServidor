@@ -142,6 +142,11 @@
                 }
             }
         }
+        /**
+         * @function seleccionarMinijuego()
+         * Función para crear el select con los minijuegos
+         * @return resultado Datos de los minijuegos
+         */
         function seleccionarMinijuego(){
             //Incluyo la vista
             include_once __DIR__. "/../views/seleccionar.php";
@@ -149,8 +154,46 @@
             $resultado=$this->modelo->listar();
             return $resultado;
         }
+        /**
+         * @function datosMinijuegoSeleccionado()
+         * Función para sacar los datos solo del minijuego seleccionado
+         * @param id El id del minijuego seleccionado
+         * @return resultado Datos del minijuego seleccionado anteriormente
+         */
         function datosMinijuegoSeleccionado($id){
             $resultado=$this->modelo->consultar($id);
+            return $resultado;
+        }
+        /**
+         * @function checkboxMinijuegos()
+         * Función para sacar los datos para crear los checkbox
+         * @return resultado Datos de los minijuegos
+         */
+        function checkboxMinijuegos(){
+            //Incluyo la vista
+            include_once __DIR__. "/../views/checkboxv2.php";
+            //Llamo a la función listar del modelo para que me devuelva todos los minijuegos que hay en la base de datos
+            $resultado=$this->modelo->listar();
+            return $resultado;
+        }
+        /**
+         * @function datosCheckboxMinijuegos()
+         * Función para sacar los datos solo de los minijuegos seleccionados
+         * @return resultado Datos de los minijuegos seleccionados anteriormente
+         */
+        function datosCheckboxMinijuegos(){
+            //Hago un array donde irán todos los id seleccionados
+            $id=[];
+            //Array donde guardaré los resultados de todos los minijuegos seleccionados
+            $reaultado=[];
+            //Meto los id en el array
+            foreach($_POST as $nombre=>$valor){
+                $id[]=$valor;
+            }
+            //Recorro el array de los id y realizo la consulta para sacar los datos de cada uno y los voy guardando en el array de resultado
+            foreach($id as $valor){
+                $resultado[]=$this->modelo->consultar($valor);
+            }
             return $resultado;
         }
     }

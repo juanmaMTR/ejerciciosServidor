@@ -16,6 +16,7 @@
                 <li><a href='index.php?accion=alta'>Alta Minijuegos</a></li>
                 <li><a href="index.php?accion=listar">Listado Minijuegos</a></li>
                 <li><a href="index.php?accion=seleccionar">Seleccion Minijuegos</a></li>
+                <li><a href="index.php?accion=checkbox">Checkbox Minijuegos</a></li>
             </ul>
         </nav>
         <table>
