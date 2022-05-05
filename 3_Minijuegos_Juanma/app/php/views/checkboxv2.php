@@ -28,7 +28,7 @@
                     echo "
                         <label>".$fila['nombre']."</label>
                         <input type=checkbox name=".$fila['nombre']." value=".$fila['id']."><br>
-                        ";
+                        ";//LLeva el name de cada minijuego y en el valor de ese checkbox es el id de cada minijuego correspondiente
                 }
             ?>
             <input type="submit" value="Ver" name="ver">
