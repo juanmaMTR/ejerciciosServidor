@@ -1,0 +1,65 @@
+/**
+ * @author Juan Manuel Toscano Reyes
+ * @file style.css
+ * Archivo para dar estilo a la página
+ */
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+h1{
+    text-align: center;
+}
+nav{
+    height: 50px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav ul{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+nav ul li{
+    list-style-type: none;
+}
+nav ul li a{
+    text-decoration: none;
+    color: black;
+}
+nav ul li a:hover{
+    color: grey;
+}
+form{
+    margin-top: 50px;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+}
+table{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-collapse: collapse;
+}
+table tr td, table tr th{
+    width: auto;
+    height: auto;
+    border: 2px solid black;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+.img{
+    width: 30%;
+    height: auto;
+}
