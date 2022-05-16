@@ -114,7 +114,11 @@
         function borrarMinijuego($id,$icono){
             $this->modelo->borrar($id);
             if($this->modelo->conexion->affected_rows>0){
-                unlink(UPLOADS.$icono);
+                if(empty($icono)){
+
+                }else{
+                    unlink(UPLOADS.$icono);
+                }
                 return "Se ha eliminado correctamente";
             }else{
                 return "Se ha producido un error";
@@ -123,27 +127,43 @@
         /**
          * @function editarMinijuego()
          * Función para editar el minijuego que se desea
-         * @param id Es el identificador del minijuego que será necesario para el modelo
+         * @param id,iconocarpeta Es el identificador del minijuego que será necesario para el modelo, Iconocarpeta es el nombre de la imagen que tiene asociada esa fila antiguamente
          * @return string Texto que se devuelve, donde dice si se ha realizado bien el editar o ha habido algún error
          */
-        function editarMinijuego($id){
+        function editarMinijuego($id,$iconocarpeta){
             //Compruebo que el nombre no se queda en blanco
             if(empty($_POST['nombre'])){
                 return "No dejes el nombre en blanco";
             }else{
                 $nombre="'".$_POST['nombre']."'";
             }
-            //Compruebo si el icono está en blanco y le meto NULL y sino le pongo las comillas para después al realizar la consulta
-            if(empty($_POST['icono'])){
-                $icono='NULL';
-            }else{
-                $icono="'".$_POST['icono']."'";
-            }
             //Compruebo que la ruta no se queda en blanco
             if(empty($_POST['ruta'])){
                 return "No dejes la ruta en blanco";
             }else{
                 $ruta="'".$_POST['ruta']."'";
+            }
+            //Compruebo si existe el fichero subido
+            if(!empty($_FILES['icono']['name'])){
+                //Meto el nombre del archivo en una variable para cuando lo subo a la base de datos
+                $icono="'".basename($_FILES["icono"]["name"])."'";
+                $tipo=$_FILES['icono']['type'];
+                $tamaño=$_FILES["icono"]["size"];
+                //Compruebo el tipo de la imagen y el tamaño
+                if($tipo=='image/png'||$tipo=='image/jpg'||$tipo=='image/jpeg'){
+                    if($tamaño > 20971520){
+                        return "El tamaño del archivo seleccionado es demasiado grande.";
+                    }else{
+                        unlink(UPLOADS.$iconocarpeta);
+                        //Muevo el archivo a la carpeta uploads
+                        $dir_subida=UPLOADS.basename($_FILES["icono"]["name"]);
+                        move_uploaded_file($_FILES['icono']['tmp_name'],$dir_subida);
+                    }
+                }else{
+                    return "La extensión utilizada no es la adecuada";
+                }
+            }else{
+                $icono="'".$iconocarpeta."'";
             }
             $this->modelo->editar($id,$nombre,$icono,$ruta);
             if($this->modelo->conexion->affected_rows>0){

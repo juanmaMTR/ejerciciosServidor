@@ -19,7 +19,7 @@
                 <li><a href="index.php?accion=checkbox">Checkbox Minijuegos</a></li>
             </ul>
         </nav>
-        <form action="#" method="post">
+        <form action="#" enctype="multipart/form-data" method="post">
             <?php
                 require_once __DIR__. "/../controller/controlador.php";
                 $controlador=new Controlador();
@@ -34,12 +34,14 @@
                 echo "
                         <label>Nombre Minijuego: </label>
                         <input type='text' value=$nombre name='nombre'><br />
-                        <label>Nombre Icono: </label>
+                        <label>Icono: </label>
                     ";
                 if($icono==NULL){
-                    echo "<input type='text' name='icono'><br />";
+                    echo "<input type='file' name='icono' /><br/>";
                 }else{
-                    echo "<input type='text' value=$icono name='icono'><br />";
+                    echo    "<div class='img'><img src='".UPLOADS.$icono."'/></div>
+                            <p>Si quiere cambiar la imagen selecciona otra aquí abajo, si quiere dejar esa imagen no seleccione ninguna.</p>
+                            <input type='file' name='icono'><br />";
                 }
                 echo "
                         <label>Ruta Minijuego: </label>
@@ -55,11 +57,11 @@
 <?php
     if(isset($_POST['editar'])){
         //LLamo al método borrarMinijuego del controlador y le paso el id que guardo antes cuando consulto el minijuego
-        $resultado=$controlador->editarMinijuego($id);
+        $resultado=$controlador->editarMinijuego($id,$icono);
         //Visualizo el resultado del metodo
         echo $resultado;
         //Redirijo a la página index en 4seg
-        header("Refresh:3,url= ../index.html");
+        header("Refresh:1,url= ../index.html");
     }
     //Si pulsan cancelar redirijo a la página index
     if(isset($_POST['cancelar'])){

@@ -56,10 +56,18 @@ table tr td, table tr th{
     border: 2px solid black;
 }
 img{
-    width: 100%;
+    width: 30%;
     height: 100%;
 }
 .img{
-    width: 30%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     height: auto;
+}
+.iconos{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
 }

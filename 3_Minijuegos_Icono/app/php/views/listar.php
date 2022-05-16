@@ -39,8 +39,8 @@
                         echo "<td><div class='img'><img src='".UPLOADS.$fila['icono']."'/></div></td>";
                     }
                     echo "       <td>".$fila['ruta']."</td>
-                            <td><a href='index.php?accion=borrar&id=".$fila['id']."'><img src='../img/eliminar.png' /></a></td>
-                            <td><a href='index.php?accion=editar&id=".$fila['id']."'><img src='../img/editar.png' /></a></td>
+                            <td><a href='index.php?accion=borrar&id=".$fila['id']."'><img src='../img/eliminar.png' class='iconos'/></a></td>
+                            <td><a href='index.php?accion=editar&id=".$fila['id']."'><img src='../img/editar.png' class='iconos'/></a></td>
                         </tr>";
                 }
             ?>
