@@ -1,3 +1,6 @@
+<?php
+    ob_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -66,5 +69,5 @@
     if(isset($_POST['cancelar'])){
         header("Location: ../index.html");
     }
-    
+    ob_end_flush();
 ?>

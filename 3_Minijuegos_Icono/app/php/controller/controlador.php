@@ -4,7 +4,7 @@
      * @file controlador.php
      * Página para controlar todos los procesos de la aplicación
      */
-
+    ob_start();
     class Controlador{
         public $modelo;
         /**
@@ -252,5 +252,5 @@
             return $resultado;
         }
     }
-
+    ob_end_flush();
 /* FIN DE lA PÁGINA */

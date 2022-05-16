@@ -1,3 +1,6 @@
+<?php
+    ob_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -58,13 +61,14 @@
     </body>
 </html>
 <?php
+    
     if(isset($_POST['editar'])){
         //LLamo al método borrarMinijuego del controlador y le paso el id que guardo antes cuando consulto el minijuego
         $resultado=$controlador->editarMinijuego($id,$icono);
         //Visualizo el resultado del metodo
         echo $resultado;
         //Redirijo a la página index en 4seg
-        //header("Refresh:1,url= ../index.html");
+        header("Refresh:1,url= ../index.html");
     }
     //Si pulsan cancelar redirijo a la página index
     if(isset($_POST['cancelar'])){
@@ -76,4 +80,5 @@
         echo $resultado;
         header("Refresh:1,url:#");
     }
+    ob_end_flush();
 ?>
