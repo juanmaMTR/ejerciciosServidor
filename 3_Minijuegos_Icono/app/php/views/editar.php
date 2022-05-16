@@ -47,6 +47,9 @@
                         <label>Ruta Minijuego: </label>
                         <input type='text' value=$ruta name='ruta'><br />
                     "; 
+                if($icono!=NULL){
+                    echo "<input type='submit' value='Borrar Imagen' name='borrar'>";
+                }
             ?>
             <br />
             <input type="submit" value="Editar" name="editar">
@@ -61,11 +64,16 @@
         //Visualizo el resultado del metodo
         echo $resultado;
         //Redirijo a la página index en 4seg
-        header("Refresh:1,url= ../index.html");
+        //header("Refresh:1,url= ../index.html");
     }
     //Si pulsan cancelar redirijo a la página index
     if(isset($_POST['cancelar'])){
         header("Location: ../index.html");
     }
-    
+    //Si pulsan en borrar la imagen la elimino y meto NULL
+    if(isset($_POST['borrar'])){
+        $resultado=$controlador->borrarImagen($id,$icono);
+        echo $resultado;
+        header("Refresh:1,url:#");
+    }
 ?>

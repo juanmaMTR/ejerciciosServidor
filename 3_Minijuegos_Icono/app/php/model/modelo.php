@@ -74,6 +74,15 @@
             //Realizo la consulta en la base de datos
             $this->conexion->query($sql);
         }
+        /**
+         * @function eliminarImagen()
+         * Función para eliminar la imagen del Editar y meterle NULL
+         * @param id,icono Variables necesarias para la consulta sql
+         */
+        function eliminarImagen($id,$icono){
+            $sql="UPDATE minijuego SET icono=$icono WHERE id=$id";
+            $this->conexion->query($sql);
+        }
     }
 
 /* FIN DE LA PAGINA */

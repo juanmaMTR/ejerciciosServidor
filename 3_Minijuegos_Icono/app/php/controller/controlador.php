@@ -154,7 +154,11 @@
                     if($tamaño > 20971520){
                         return "El tamaño del archivo seleccionado es demasiado grande.";
                     }else{
-                        unlink(UPLOADS.$iconocarpeta);
+                        if(!$iconocarpeta==NULL){
+                            if(file_exists(UPLOADS.$iconocarpeta)){
+                                unlink(UPLOADS.$iconocarpeta);
+                            }
+                        }
                         //Muevo el archivo a la carpeta uploads
                         $dir_subida=UPLOADS.basename($_FILES["icono"]["name"]);
                         move_uploaded_file($_FILES['icono']['tmp_name'],$dir_subida);
@@ -175,6 +179,22 @@
                 }else{
                     return "Se ha producido un error inesperado";
                 }
+            }
+        }
+        /**
+         * @function borrarImagen()
+         * Función para borrar la imagen del editar
+         * @param id,iconocarpeta
+         * @return string Texto que se devuelve con información
+         */
+        function borrarImagen($id,$iconocarpeta){
+            $icono='NULL';
+            $this->modelo->eliminarImagen($id,$icono);
+            if($this->modelo->conexion->affected_rows>0){
+                unlink(UPLOADS.$iconocarpeta);
+                return "Hay ".$this->modelo->conexion->affected_rows." filas afectadas.";
+            }else{
+                return "Se ha producido un error inesperado";
             }
         }
         /**
